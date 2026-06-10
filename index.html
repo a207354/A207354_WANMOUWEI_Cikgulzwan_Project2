@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A207354 WAN MOUWEI Mobile Application Programming e-Portfolio" />
+  <title>A207354_WANMOUWEI_Cikgulzwan_Project2 e-Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #607086;
+      --primary: #1f7a8c;
+      --primary-dark: #13505b;
+      --accent: #e9f7f9;
+      --border: #dbe7ef;
+      --shadow: 0 16px 40px rgba(31, 122, 140, 0.13);
+      --radius: 18px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(31,122,140,0.14), transparent 34%),
+        linear-gradient(180deg, #f9fcff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      padding: 110px 22px 70px;
+      background:
+        linear-gradient(135deg, rgba(31,122,140,0.13), rgba(255,255,255,0.75)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%231f7a8c' stroke-opacity='0.12'%3E%3Cpath d='M0 80h160M80 0v160'/%3E%3Ccircle cx='80' cy='80' r='55'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      color: var(--primary-dark);
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .nav-links a:hover {
+      background: var(--accent);
+      text-decoration: none;
+    }
+    .hero {
+      max-width: 1020px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .hero-card, .profile-card, .card, .section-block {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card {
+      padding: 38px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2.3rem, 7vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+    }
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 680px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      background: var(--surface);
+      color: var(--primary-dark);
+    }
+    .btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .profile-card {
+      padding: 28px;
+    }
+    .profile-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #62b6cb);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+    .info-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+    .info-list div {
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 8px;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 46px 22px 80px;
+    }
+    section {
+      scroll-margin-top: 86px;
+      margin-bottom: 54px;
+    }
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: -1px;
+    }
+    .section-note {
+      color: var(--muted);
+      margin: 8px 0 0;
+      max-width: 720px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body {
+      padding: 22px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.24rem;
+    }
+    .tag {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+    .video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #d8e8ef;
+      border: 0;
+      display: block;
+    }
+    .reflection {
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+    .section-block {
+      padding: 28px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .skill {
+      padding: 9px 12px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+    }
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--primary-dark);
+      color: white;
+    }
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid, .grid.three {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        padding: 28px;
+      }
+      .section-title {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#home">WAN MOUWEI e-Portfolio</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#labs">Labs</a>
+        <a href="#projects">Projects</a>
+        <a href="#reflection">Reflection</a>
+        <a href="#skills">Skills</a>
+        <a href="#resources">Resources</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">TK2323 / TM2213 Mobile Application Programming</span>
+        <h1>Student e-Portfolio</h1>
+        <p class="subtitle">
+          This e-Portfolio presents my mobile application learning journey from Lab 1 to Project 2.
+          It includes my lab videos, project demonstrations, GitHub repositories, learning reflection,
+          and the technical skills I developed using Kotlin and Jetpack Compose.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/a207354/A207354_WANMOUWEI_Cikgulzwan_Project2" target="_blank" rel="noopener">Project 2 GitHub</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Student profile">
+        <div class="profile-avatar" aria-label="Profile initials">WM</div>
+        <dl class="info-list">
+          <div><dt><strong>Name</strong></dt><dd>WAN MOUWEI</dd></div>
+          <div><dt><strong>Matric No.</strong></dt><dd>A207354</dd></div>
+          <div><dt><strong>Programme</strong></dt><dd>Bachelor of Software Engineering</dd></div>
+          <div><dt><strong>Instructor</strong></dt><dd>Cikgu Lzwan</dd></div>
+          <div><dt><strong>SDG Theme</strong></dt><dd>SDG 3: Good Health and Well-being</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="sdg">
+      <div class="section-block">
+        <h2>SDG Theme & Learning Goal</h2>
+        <p>
+          My selected theme is <strong>SDG 3: Good Health and Well-being</strong>, because mobile technology can support users in tracking emotions, building healthier habits, and improving personal awareness.
+          Through this course, my goal was to improve my Android development skills and understand how real mobile applications combine UI design, state management, local storage, internet data, cloud services, and sensor features.
+        </p>
+      </div>
+    </section>
+
+    <section id="labs">
+      <div class="section-title">
+        <div>
+          <h2>Lab Submissions</h2>
+          <p class="section-note">Lab 1 to Lab 5 show my progress from basic UI construction to persistent data storage.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/2fSExZTnpAQ" title="Lab 1 UI video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Lab 1</span><span class="tag">UI</span>
+            <h3>Lab 1: Basic User Interface</h3>
+            <p>This lab focused on building a simple mobile interface using Compose layout components.</p>
+            <p class="reflection">I learned how to arrange UI elements clearly using basic layout structures. This lab helped me understand how visual hierarchy and spacing affect the user experience.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/aTXmqexqigc" title="Lab 2 Interaction video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Lab 2</span><span class="tag">Interaction</span>
+            <h3>Lab 2: Interaction</h3>
+            <p>This lab introduced interactive components such as clickable items, input fields, and user actions.</p>
+            <p class="reflection">I learned how to make an interface respond to user input. It helped me understand that a mobile app should not only look good, but also provide clear feedback to the user.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/GlkREIVEBlI" title="Lab 3 Material Design video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Lab 3</span><span class="tag">Material Design</span>
+            <h3>Lab 3: Material Design</h3>
+            <p>This lab focused on applying Material Design principles, theming, and improved visual styling.</p>
+            <p class="reflection">I learned how typography, colours, cards, and shapes improve the professional look of an app. This lab also helped me become more confident in creating consistent UI design.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/DOiC-AUlSYk" title="Lab 4 Navigation video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Lab 4</span><span class="tag">Navigation</span>
+            <h3>Lab 4: Navigation</h3>
+            <p>This lab introduced multiple screens and navigation flow using Navigation Compose.</p>
+            <p class="reflection">I learned how to connect screens and pass users through a more complete app flow. This was important preparation for Project 1 because real applications normally need more than one screen.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/pybUKOuphaQ" title="Lab 5 Room video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Lab 5</span><span class="tag">Room</span>
+            <h3>Lab 5: Room Database</h3>
+            <p>This lab focused on local data persistence using Room Database.</p>
+            <p class="reflection">I learned how to save data permanently on the device and display saved data later. This helped me understand why persistence is important for useful mobile applications.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <div>
+          <h2>Project Submissions</h2>
+          <p class="section-note">Project 1 and Project 2 demonstrate the development of a more complete mobile application with working features.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/KACqE_flCQQ" title="Project 1 VSR video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Project 1</span><span class="tag">Navigation</span><span class="tag">ViewModel</span>
+            <h3>Project 1: MoodFlow</h3>
+            <p><strong>Problem Statement:</strong> Many students experience stress and mood changes but may not have a simple tool to record and review their feelings. MoodFlow provides a simple way to add mood records and view them through a multi-screen app flow.</p>
+            <p class="reflection">In Project 1, I learned how to combine navigation, ViewModel state management, and multiple screens into a working app. I also learned the importance of keeping the app flow simple and understandable for users.</p>
+            <p><a class="btn" href="https://github.com/a207354/A207354_WANMOUWEI_Cikgulzwan_Project1" target="_blank" rel="noopener">View on GitHub</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <iframe class="video" src="https://www.youtube.com/embed/2uzU0SZhsDE" title="Project 2 VSR video" allowfullscreen></iframe>
+          <div class="card-body">
+            <span class="tag">Project 2</span><span class="tag">Room</span><span class="tag">API</span><span class="tag">Sensor</span><span class="tag">Firebase</span>
+            <h3>Project 2: Advanced Mobile Application</h3>
+            <p><strong>Problem Statement:</strong> Modern mobile apps need to store data, connect to online services, and use device hardware to provide useful functions. This project extends the previous app by adding persistent data, cloud integration, web API data, and sensor-based interaction.</p>
+            <p class="reflection">In Project 2, I learned how advanced Android features work together in a real application. I improved my understanding of Room, Firebase, Retrofit/API, sensor integration, and how to explain the code during a live Q&amp;A.</p>
+            <p><a class="btn" href="https://github.com/a207354/A207354_WANMOUWEI_Cikgulzwan_Project2" target="_blank" rel="noopener">View on GitHub</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="section-block">
+        <h2>Reflection & Learning Journey</h2>
+        <p>
+          From Lab 1 to Project 2, I gradually developed my ability to build Android applications using Kotlin and Jetpack Compose.
+          At the beginning, I mainly focused on basic layout and UI structure. Later, I learned how to add interaction, navigation, ViewModel state management, Room Database, API integration, Firebase, and sensor features.
+          The biggest challenge was understanding how different technical parts connect together, especially persistence, cloud data, and live API data.
+          This project helped me see how mobile applications can support real user needs and connect with the SDG theme through practical digital solutions.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-block">
+        <h2>Skills & Tech Stack</h2>
+        <p>These are the technologies and concepts I practised throughout the labs and projects.</p>
+        <div class="skills" aria-label="Skills list">
+          <span class="skill">Kotlin</span>
+          <span class="skill">Jetpack Compose</span>
+          <span class="skill">Material 3</span>
+          <span class="skill">Navigation Compose</span>
+          <span class="skill">ViewModel</span>
+          <span class="skill">Room Database</span>
+          <span class="skill">Firebase Firestore</span>
+          <span class="skill">Retrofit / REST API</span>
+          <span class="skill">Sensor Integration</span>
+          <span class="skill">Android Studio</span>
+          <span class="skill">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-block">
+        <h2>Resources & References</h2>
+        <p>
+          Resources used in this learning journey include Android Studio, Kotlin, Jetpack Compose, Material 3, Navigation Compose, Room Database, Firebase Firestore, Retrofit/REST API references, and Android sensor documentation.
+          I also used AI assistance to help understand errors, improve explanations, and organize my e-Portfolio content. All final code and explanations were reviewed and adjusted based on my own understanding.
+        </p>
+        <p>
+          Project 2 GitHub Repository:
+          <a href="https://github.com/a207354/A207354_WANMOUWEI_Cikgulzwan_Project2" target="_blank" rel="noopener">https://github.com/a207354/A207354_WANMOUWEI_Cikgulzwan_Project2</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>WAN MOUWEI</strong> · A207354 · 2026</p>
+    <p>Mobile Application Programming e-Portfolio</p>
+  </footer>
+</body>
+</html>
