@@ -15,7 +15,7 @@ The application is designed based on the selected Sustainable Development Goal (
 
 ## SDG Theme
 
-This project continues the same SDG theme from Project 1.
+This project continues SDG 3: Good Health and Well-being from Project 1.
 
 ## Main Features
 
